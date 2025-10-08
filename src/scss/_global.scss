@@ -26,3 +26,31 @@ body {
 .text-white-75 {
     color: fade-out($white, 0.25) !important;
 }
+
+#portfolio {
+  padding-top: 6rem;
+}
+.portfolio-thumb {
+  height: 260px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.portfolio-thumb:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+.portfolio-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1rem;
+}
+.portfolio-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.portfolio-item img {
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+}
