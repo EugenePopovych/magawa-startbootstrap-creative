@@ -128,7 +128,10 @@ html(lang='de')
                         p.text-muted.mb-5 Wir freuen uns auf Ihre Anfrage!
                 .row.gx-4.gx-lg-5.justify-content-center.mb-5
                     .col-lg-6
-                        form#contactForm(method='POST', action='https://formsubmit.co/info@magawa-bau.de')
+                        form#contactForm(method='POST', action='https://formsubmit.co/magawa.store@gmail.com')
+                            // FormSubmit hidden inputs to disable captcha and set redirect
+                            input(type='hidden', name='_captcha', value='false')
+                            input(type='hidden', name='_next', value='https://magawa-bau.de/thank-you')
                             .form-floating.mb-3
                                 input#name.form-control(type='text', name='name', placeholder='Ihr Name *', required)
                                 label(for='name') Ihr Name *
@@ -147,6 +150,18 @@ html(lang='de')
                     .col-lg-4.text-center.mb-5.mb-lg-0
                         i.bi-phone.fs-2.mb-3.text-muted
                         div +421 905 380 898
+
+        // Contact response modal (shown after AJAX submit)
+        #contactResponseModal.modal.fade(tabindex='-1', aria-labelledby='contactResponseModalLabel', aria-hidden='true')
+            .modal-dialog.modal-dialog-centered
+                .modal-content
+                    .modal-header
+                        h5#contactResponseModalLabel.modal-title Antwort
+                        button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+                    .modal-body
+                        p#contactResponseModalBody
+                    .modal-footer
+                        button.btn.btn-secondary(type='button', data-bs-dismiss='modal') Schließen
 
         // Footer
         footer.bg-light.py-5

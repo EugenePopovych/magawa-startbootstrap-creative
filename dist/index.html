@@ -207,7 +207,10 @@
                 </div>
                 <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
                     <div class="col-lg-6">
-                        <form id="contactForm" method="POST" action="https://formsubmit.co/info@magawa-bau.de">
+                        <form id="contactForm" method="POST" action="https://formsubmit.co/magawa.store@gmail.com">
+                            <!-- FormSubmit hidden inputs to disable captcha and set redirect-->
+                            <input type="hidden" name="_captcha" value="false" />
+                            <input type="hidden" name="_next" value="https://magawa-bau.de/thank-you" />
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="name" type="text" name="name" placeholder="Ihr Name *" required />
                                 <label for="name">Ihr Name *</label>
@@ -236,6 +239,19 @@
                 </div>
             </div>
         </section>
+        <!-- Contact response modal (shown after AJAX submit)-->
+        <div class="modal fade" id="contactResponseModal" tabindex="-1" aria-labelledby="contactResponseModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="contactResponseModalLabel">Antwort</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body"><p id="contactResponseModalBody"></p></div>
+                    <div class="modal-footer"><button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Schließen</button></div>
+                </div>
+            </div>
+        </div>
         <!-- Footer-->
         <footer class="bg-light py-5">
             <div class="container px-4 px-lg-5"><div class="small text-center text-muted">© 2025 Magawa Bau – Renovierung & Montage</div></div>
