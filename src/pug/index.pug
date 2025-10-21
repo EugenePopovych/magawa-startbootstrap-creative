@@ -111,6 +111,16 @@ html(lang='de')
                                 .portfolio-box-caption.p-3
                                     .project-category.text-white-50 Magawa Bau
                                     .project-name Referenzarbeit
+                h4.text-uppercase.text-center.mt-5 Messebau – aktuelles Projekt
+                .row.g-0
+                    each num in [1,2,3,4,5,6,7,8,9]
+                        - const file = num.toString().padStart(3, '10') + '.jpg';
+                        .col-lg-4.col-sm-6
+                            a.portfolio-box(href=`assets/img/portfolio/fullsize/Messebau/${file}`, title='Referenzarbeit')
+                                img.img-fluid(src=`assets/img/portfolio/thumbnails/Messebau/${file}`, alt='Referenzarbeit')
+                                .portfolio-box-caption.p-3
+                                    .project-category.text-white-50 Magawa Bau
+                                    .project-name Referenzarbeit
 
         // Call to action
         section.page-section.bg-dark.text-white
