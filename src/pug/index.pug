@@ -139,9 +139,8 @@ html(lang='de')
                 .row.gx-4.gx-lg-5.justify-content-center.mb-5
                     .col-lg-6
                         form#contactForm(method='POST', action='https://formsubmit.co/magawa.store@gmail.com')
-                            // FormSubmit hidden inputs to disable captcha and set redirect
+                            // FormSubmit hidden inputs (captcha disabled)
                             input(type='hidden', name='_captcha', value='false')
-                            input(type='hidden', name='_next', value='https://magawa-bau.de/thank-you')
                             .form-floating.mb-3
                                 input#name.form-control(type='text', name='name', placeholder='Ihr Name *', required)
                                 label(for='name') Ihr Name *
@@ -187,3 +186,37 @@ html(lang='de')
 
         // Core theme JS
         script(src='js/scripts.js')
+        // Inline contact form handler (no redirect, inline messages)
+        script.
+            document.addEventListener('DOMContentLoaded', function () {
+                var form = document.getElementById('contactForm');
+                if (!form) return;
+                var successEl = document.getElementById('submitSuccessMessage');
+                var errorEl = document.getElementById('submitErrorMessage');
+
+                // Remove any existing submit listeners by cloning the node
+                var clone = form.cloneNode(true);
+                form.parentNode.replaceChild(clone, form);
+
+                clone.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    if (successEl) successEl.classList.add('d-none');
+                    if (errorEl) errorEl.classList.add('d-none');
+
+                    fetch(clone.action, {
+                        method: 'POST',
+                        body: new FormData(clone),
+                        headers: { 'Accept': 'application/json' }
+                    }).then(function (response) {
+                        if (response.ok) {
+                            if (successEl) successEl.classList.remove('d-none');
+                            clone.reset();
+                        } else {
+                            if (errorEl) errorEl.classList.remove('d-none');
+                        }
+                    }).catch(function () {
+                        if (errorEl) errorEl.classList.remove('d-none');
+                    });
+                });
+            });
